@@ -19,12 +19,15 @@ Or install it yourself as:
     $ gem install grammarbot
 
 ## Usage
-Client initialization, `api_key` and `language` are optional and could be ommited.
+Client initialization, `api_key`, `language` and `base_uri` are optional and could be ommited, or defined later
 
-    gbot = Grammarbot::Client.new(api_key: 'grammarbot_default_key', language: 'en-US')
+    gbot = Grammarbot::Client.new(api_key: 'grammarbot_default_key', language: 'en-US', base_uri: 'http://api.grammarbot.io/v2')
+
+    gbot.api_key = 'new_api_key'
+    gbot.language = 'en-GB'
+    gbot.base_uri = 'http://pro.grammarbot.io/v3'
 
 Don't want to check the key into source control? Put the key on the GRAMMARBOT_API_KEY environment variable!
-
 
 Simple example
 

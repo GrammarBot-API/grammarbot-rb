@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'Integration spec' do
+describe 'Integration spec', integration: true do
   let(:client) { Grammarbot::Client.new }
   let(:text) { "I can't remember how to go their." }
 

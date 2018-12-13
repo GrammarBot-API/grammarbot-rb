@@ -4,14 +4,13 @@ module Grammarbot
   class Client
     include HTTParty
 
-    base_uri 'http://api.grammarbot.io/v2'
-    format :json
-
     # Initializes API client
     # @param api_key [String] GrammarBot API key, optional
-    # @param language [String] GrammarBot API key, optional
-    def initialize(api_key: nil, language: 'en-US')
+    # @param language [String] language in which to check, optional
+    # @param base_uri [String] GrammarBot API server url, optional
+    def initialize(api_key: nil, language: 'en-US', base_uri: 'http://api.grammarbot.io/v2')
       api_key ||= ENV['GRAMMARBOT_API_KEY'] || 'ruby-default'
+      self.class.base_uri base_uri
       self.class.default_params api_key: api_key, language: language
     end
 
@@ -20,6 +19,24 @@ module Grammarbot
     # @return [Object] GrammarBot response
     def check(text)
       request(:get, '/check', query: { text: text })
+    end
+
+    # Change client api_key
+    # @param new_api_key [String] API key
+    def api_key=(new_api_key)
+      self.class.default_params[:api_key] = new_api_key
+    end
+
+    # Change language for text check
+    # @param lang [String] language code
+    def language=(lang)
+      self.class.default_params[:language] = lang
+    end
+
+    # Change client base_uri
+    # @param uri [String] API endpoint base uri
+    def base_uri=(uri)
+      self.class.base_uri(uri)
     end
 
     private
