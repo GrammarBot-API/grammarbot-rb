@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'Integration spec' do
-  let(:client) { Grammarbot::Client.new() }
+  let(:client) { Grammarbot::Client.new }
   let(:text) { "I can't remember how to go their." }
 
   it 'just works' do
