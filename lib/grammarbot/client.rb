@@ -8,7 +8,7 @@ module Grammarbot
     # @param api_key [String] GrammarBot API key, optional
     # @param language [String] language in which to check, optional
     # @param base_uri [String] GrammarBot API server url, optional
-    def initialize(api_key: nil, language: 'en-US', base_uri: 'http://api.grammarbot.io/v2')
+    def initialize(api_key: nil, language: 'en-US', base_uri: 'http://api.grammarbot.io')
       api_key ||= ENV['GRAMMARBOT_API_KEY'] || 'ruby-default'
       self.class.base_uri base_uri
       self.class.default_params api_key: api_key, language: language
@@ -18,7 +18,7 @@ module Grammarbot
     # @param text [String] text to submit
     # @return [Object] GrammarBot response
     def check(text)
-      request(:get, '/check', query: { text: text })
+      request(:get, '/v2/check', query: { text: text })
     end
 
     # Change client api_key

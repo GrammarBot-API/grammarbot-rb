@@ -21,7 +21,7 @@ describe Grammarbot::Client do
 
   describe '#base_uri=' do
     it 'changes the base_uri' do
-      subject.base_uri = 'http://localhost:3000/'
+      subject.base_uri = 'http://localhost:3000'
       expect(subject.class.base_uri).to eql('http://localhost:3000')
     end
   end
